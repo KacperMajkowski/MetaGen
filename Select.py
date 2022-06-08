@@ -19,7 +19,8 @@ def initial_select(distance_matrix, paths_amount,
 
     return initial_paths
 
-def find_turnament_winner(turnament):
+
+def find_tournament_winner(turnament):
     min = 100000000000
     for path in turnament:
         if(path[1] < min):
@@ -28,11 +29,11 @@ def find_turnament_winner(turnament):
     return final_path
 
 
-def select(turnament_size, paths):
-    turnament_winners = []
+def select(tournament_size, paths):
+    tournament_winners = []
     for i in range(len(paths)):
-        turnament = []
-        for j in range(turnament_size):
-            turnament.append(random.choice(paths))
-        turnament_winners.append(find_turnament_winner(turnament))
-    print(turnament_winners)
+        tournament = []
+        for j in range(tournament_size):
+            tournament.append(random.choice(paths))
+        tournament_winners.append(find_tournament_winner(tournament))
+    print(tournament_winners)
