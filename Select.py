@@ -20,11 +20,12 @@ def initial_select(distance_matrix, paths_amount,
     return initial_paths
 
 
-def find_tournament_winner(turnament):
-    min = 100000000000
-    for path in turnament:
-        if(path[1] < min):
-            min = path[1]
+def find_tournament_winner(tournament):
+    bestDistance = tournament[0][1]
+    final_path = tournament[0]
+    for path in tournament:
+        if path[1] < bestDistance:
+            bestDistance = path[1]
             final_path = path
     return final_path
 
