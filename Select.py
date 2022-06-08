@@ -1,15 +1,16 @@
 import random
 
-from Greedy_algorythm import greedy_alogrythm
+from Greedy_algorythm import greedy_algorithm
 from Misc_functions import generateRandomPermutation, calculateDistance
 
 
-def initial_select(distance_matrix, paths_amount,
-                   elite_percent):  # lenght - amount of initial paths, elite_percent - Percentage of paths made by greedy algorythm
+def initial_select(distance_matrix, paths_amount, elite_percent):
+    # paths_amount - amount of initial paths,
+    # elite_percent - Percentage of paths made by greedy algorythm
     initial_paths = []
     elites = round(paths_amount * elite_percent / 100)
     for i in range(elites):
-        permutation = greedy_alogrythm(distance_matrix, i % len(distance_matrix))
+        permutation = greedy_algorithm(distance_matrix, i % len(distance_matrix))
         permutation_length = calculateDistance(permutation, distance_matrix)
         initial_paths.append([permutation, permutation_length])
     for i in range(paths_amount - elites):

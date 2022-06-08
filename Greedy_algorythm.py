@@ -1,5 +1,7 @@
+from Misc_functions import calculateDistance
 
-def greedy_alogrythm(data, starting_point):
+
+def greedy_algorithm(data, starting_point):
     currNode = starting_point
     permutation = [currNode]
 
@@ -24,13 +26,13 @@ def greedy_alogrythm(data, starting_point):
     return permutation
 
 
-def extended_greedy(data):
+def extended_greedy(distance_matrix):
     bestDistance = -1
     bestPermutation = []
 
-    for s in range(len(data)):
-        permutation = greedy_alogrythm(data, s)
-        dist = hamiltonian_path(data, permutation)
+    for s in range(len(distance_matrix)):
+        permutation = greedy_algorithm(distance_matrix, s)
+        dist = calculateDistance(distance_matrix, permutation)
 
         if s == 0 or dist < bestDistance:
             bestDistance = dist
