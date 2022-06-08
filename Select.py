@@ -15,4 +15,3 @@ def initial_select(distance_matrix, lenght, elite_percent): # lenght - amount of
 
     return initial_paths
 
-def select(distance_matrix)
