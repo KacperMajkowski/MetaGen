@@ -1,11 +1,13 @@
 import tsplib95
 
+
 def askUserForFilename():
     file_name = input("Podaj nazwę pliku\n")
-    data_matrix = tsplib95.load('/home/igor/PycharmProjects/MetaGen/Problems/' + file_name)
+    data_matrix = tsplib95.load('Problems/' + file_name)
     distance_matrix = get_distance_matrix(data_matrix)
     # print(distance_matrix)
     return distance_matrix
+
 
 def get_distance_matrix(problem):
 
