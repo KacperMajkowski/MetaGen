@@ -31,11 +31,43 @@ def find_tournament_winner(tournament):
     return final_path
 
 
-def select(tournament_size, paths):
-    tournament_winners = []
-    for i in range(len(paths)):
-        tournament = []
-        for j in range(tournament_size):
-            tournament.append(random.choice(paths))
-        tournament_winners.append(find_tournament_winner(tournament))
-    print(tournament_winners)
+
+
+
+
+def select(select_size, paths, type):
+    if type == "TUR":
+        tournament_winners = []
+        for i in range(len(paths)):
+            tournament = []
+            for j in range(select_size):
+                tournament.append(random.choice(paths))
+            tournament_winners.append(find_tournament_winner(tournament))
+        print(tournament_winners)
+        return tournament_winners
+    else:
+        if type == "PRB":
+            sum = 0
+            probability = []
+            probabilitytest = []
+            tournament_winners = []
+            probability.append(0)
+            for i in range(0, len(paths)):
+                sum += paths[i][1]
+            for i in range(1, len(paths)):
+                probability.append(sum/paths[i][1]+probability[i-1])
+                probabilitytest.append(paths[i][1])
+            for i in range(select_size):
+                random_path = random.randint(0, int(probability[len(paths)-1]))
+                for j in range(0, len(paths)):
+                    if probability[j] > random_path:
+                        # print(random_path)
+                        # print(paths[j])
+                        tournament_winners.append(paths[j])
+                        break;
+
+
+            # print(probabilitytest)
+            # print(probability)
+            print(tournament_winners)
+
