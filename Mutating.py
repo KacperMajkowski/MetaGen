@@ -1,4 +1,5 @@
 import random
+from Misc_functions import calculateDistance
 
 
 def swapRandom(permutation):
@@ -14,7 +15,31 @@ def mutate(permutation, probability):
     if probability >= 100:
         return
     roll = random.randint(0, 100)
+    mutated = False
     while roll < probability:
+        mutated = True
         swapRandom(permutation)
         roll = random.randint(0, 100)
+    return [permutation, mutated]
+        
+
+def mutatePopulation(distance_matrix, population, probability):
+    
+    newPopulation = []
+    
+    for specimen in population:
+    
+        mutation_result = mutate(specimen[0], probability)
+        mutated = mutation_result[1]
+        
+        if mutated:
+            permutation = mutation_result[0]
+            length = calculateDistance(permutation, distance_matrix)
+            newSpecimen = [permutation, length]
+        else:
+            newSpecimen = specimen.copy()
+            
+        newPopulation.append(newSpecimen)
+    
+    return newPopulation
 

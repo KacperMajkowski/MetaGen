@@ -1,4 +1,5 @@
 import random
+from Misc_functions import calculateDistance
 
 
 def getIndex(a, arr):
@@ -54,8 +55,20 @@ def cross(arr1, arr2):
     mapElements(a1, b2, a3, b1, a2, b3)
     
     return [a1 + b2 + a3, b1 + a2 + b3]
-    
 
-    
 
+def crossPopulation(distance_matrix, population):
+    newPopulation = population.copy()
+    crossNum = len(population)//2
+    
+    for i in range(0, crossNum):
+        parent1 = population[2*i][0]
+        parent2 = population[2*i + 1][0]
+        children = cross(parent1, parent2)
+        child1 = [children[0], calculateDistance(children[0], distance_matrix)]
+        child2 = [children[1], calculateDistance(children[1], distance_matrix)]
+        newPopulation.append(child1)
+        newPopulation.append(child2)
+        
+    return newPopulation
 
