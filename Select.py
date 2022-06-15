@@ -38,4 +38,4 @@ def select(tournament_size, paths):
         for j in range(tournament_size):
             tournament.append(random.choice(paths))
         tournament_winners.append(find_tournament_winner(tournament))
-    print(tournament_winners)
+    return tournament_winners
