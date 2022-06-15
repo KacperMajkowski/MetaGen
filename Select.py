@@ -31,10 +31,6 @@ def find_tournament_winner(tournament):
     return final_path
 
 
-
-
-
-
 def select(select_size, paths, type):
     if type == "TUR":
         tournament_winners = []

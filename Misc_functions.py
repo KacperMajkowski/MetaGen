@@ -15,3 +15,4 @@ def calculateDistance(permutation, distance_matrix):
     for i in range(len(permutation)):
         total_distance += distance_matrix[permutation[i]][permutation[(i + 1) % len(permutation)]]
     return total_distance
+        
