@@ -12,11 +12,11 @@ def initial_select(distance_matrix, paths_amount, elite_percent):
     for i in range(elites):
         permutation = greedy_algorithm(distance_matrix, i % len(distance_matrix))
         permutation_length = calculateDistance(permutation, distance_matrix)
-        initial_paths.append([permutation, permutation_length])
+        initial_paths.append([permutation, permutation_length, 0])
     for i in range(paths_amount - elites):
         permutation = generateRandomPermutation(len(distance_matrix))
         permutation_length = calculateDistance(permutation, distance_matrix)
-        initial_paths.append([permutation, permutation_length])
+        initial_paths.append([permutation, permutation_length, 2])
 
     return initial_paths
 
@@ -31,7 +31,19 @@ def find_tournament_winner(tournament):
     return final_path
 
 
-def select(select_size, paths, type):
+
+
+
+
+def select(select_size, paths, type, max_age):
+    for i in range(len(paths)):
+        deathindex = []
+        if paths[i][2] > 0:
+            death = random.randint(1,max_age)
+            if(death <=paths[i][2] ):
+                deathindex.append(i)
+    for j in deathindex:
+        paths.pop(j)
     if type == "TUR":
         tournament_winners = []
         for i in range(len(paths)):
