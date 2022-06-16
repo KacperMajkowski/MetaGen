@@ -31,16 +31,8 @@ def find_tournament_winner(tournament):
     return final_path
 
 
-def select(select_size, paths, type, max_age):
-    death_index = []
-    for i in range(len(paths)):
-        death_index = []
-        if paths[i][2] > 0:
-            death = random.randint(1,max_age)
-            if death <= paths[i][2]:
-                death_index.append(i)
-    for j in death_index:
-        paths.pop(j)
+def select(select_size, paths, type):
+    
     if type == "TUR":
         tournament_winners = []
         for i in range(len(paths)):
@@ -48,7 +40,7 @@ def select(select_size, paths, type, max_age):
             for j in range(select_size):
                 tournament.append(random.choice(paths))
             tournament_winners.append(find_tournament_winner(tournament))
-        print(tournament_winners)
+        # print(tournament_winners)
         return tournament_winners
     else:
         if type == "PRB":
@@ -69,10 +61,10 @@ def select(select_size, paths, type, max_age):
                         # print(random_path)
                         # print(paths[j])
                         tournament_winners.append(paths[j])
-                        break;
+                        break
 
 
             # print(probabilitytest)
             # print(probability)
-            print(tournament_winners)
+            # print(tournament_winners)
 

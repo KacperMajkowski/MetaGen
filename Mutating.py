@@ -34,8 +34,9 @@ def mutatePopulation(distance_matrix, population, probability):
         
         if mutated:
             permutation = mutation_result[0]
+            age = specimen[2]
             length = calculateDistance(permutation, distance_matrix)
-            newSpecimen = [permutation, length]
+            newSpecimen = [permutation, length, age]
         else:
             newSpecimen = specimen.copy()
             
